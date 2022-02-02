@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4400A05827AB054D0084C099 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4400A05727AB054D0084C099 /* QuestionTableViewCell.swift */; };
 		443EB45627A449DF006ADDFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443EB45527A449DF006ADDFD /* AppDelegate.swift */; };
 		443EB45827A449DF006ADDFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443EB45727A449DF006ADDFD /* SceneDelegate.swift */; };
 		443EB45A27A449DF006ADDFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443EB45927A449DF006ADDFD /* ViewController.swift */; };
@@ -14,9 +15,14 @@
 		443EB46027A449DF006ADDFD /* StackOverflowApplication.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 443EB45E27A449DF006ADDFD /* StackOverflowApplication.xcdatamodeld */; };
 		443EB46227A449F7006ADDFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 443EB46127A449F7006ADDFD /* Assets.xcassets */; };
 		443EB46527A449F7006ADDFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443EB46327A449F7006ADDFD /* LaunchScreen.storyboard */; };
+		443EB46E27A44A4D006ADDFD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443EB46D27A44A4D006ADDFD /* NetworkManager.swift */; };
+		443EB47927A44EB9006ADDFD /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443EB47627A44EB9006ADDFD /* Items.swift */; };
+		443EB47A27A44EB9006ADDFD /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443EB47727A44EB9006ADDFD /* Owner.swift */; };
+		443EB47B27A44EB9006ADDFD /* StackOverFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443EB47827A44EB9006ADDFD /* StackOverFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4400A05727AB054D0084C099 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		443EB45227A449DF006ADDFD /* StackOverflowApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackOverflowApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		443EB45527A449DF006ADDFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		443EB45727A449DF006ADDFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +32,10 @@
 		443EB46127A449F7006ADDFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		443EB46427A449F7006ADDFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		443EB46627A449F7006ADDFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		443EB46D27A44A4D006ADDFD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		443EB47627A44EB9006ADDFD /* Items.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Items.swift; path = StackOverFlow/Items.swift; sourceTree = "<group>"; };
+		443EB47727A44EB9006ADDFD /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Owner.swift; path = StackOverFlow/Owner.swift; sourceTree = "<group>"; };
+		443EB47827A44EB9006ADDFD /* StackOverFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackOverFlow.swift; path = StackOverFlow/StackOverFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +49,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4400A05527AB050F0084C099 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4400A05727AB054D0084C099 /* QuestionTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4400A05627AB05190084C099 /* ViewControler */ = {
+			isa = PBXGroup;
+			children = (
+				443EB45927A449DF006ADDFD /* ViewController.swift */,
+			);
+			path = ViewControler;
+			sourceTree = "<group>";
+		};
 		443EB44927A449DE006ADDFD = {
 			isa = PBXGroup;
 			children = (
@@ -58,9 +84,11 @@
 		443EB45427A449DF006ADDFD /* StackOverflowApplication */ = {
 			isa = PBXGroup;
 			children = (
+				4400A05627AB05190084C099 /* ViewControler */,
+				4400A05527AB050F0084C099 /* View */,
+				443EB46C27A44A32006ADDFD /* NetworkManager */,
 				443EB45527A449DF006ADDFD /* AppDelegate.swift */,
 				443EB45727A449DF006ADDFD /* SceneDelegate.swift */,
-				443EB45927A449DF006ADDFD /* ViewController.swift */,
 				443EB45B27A449DF006ADDFD /* Main.storyboard */,
 				443EB46127A449F7006ADDFD /* Assets.xcassets */,
 				443EB46327A449F7006ADDFD /* LaunchScreen.storyboard */,
@@ -68,6 +96,25 @@
 				443EB45E27A449DF006ADDFD /* StackOverflowApplication.xcdatamodeld */,
 			);
 			path = StackOverflowApplication;
+			sourceTree = "<group>";
+		};
+		443EB46C27A44A32006ADDFD /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				443EB46F27A44B4B006ADDFD /* Api */,
+				443EB46D27A44A4D006ADDFD /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		443EB46F27A44B4B006ADDFD /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				443EB47627A44EB9006ADDFD /* Items.swift */,
+				443EB47727A44EB9006ADDFD /* Owner.swift */,
+				443EB47827A44EB9006ADDFD /* StackOverFlow.swift */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,9 +189,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				443EB45A27A449DF006ADDFD /* ViewController.swift in Sources */,
+				443EB47A27A44EB9006ADDFD /* Owner.swift in Sources */,
 				443EB45627A449DF006ADDFD /* AppDelegate.swift in Sources */,
+				443EB46E27A44A4D006ADDFD /* NetworkManager.swift in Sources */,
+				443EB47927A44EB9006ADDFD /* Items.swift in Sources */,
 				443EB45827A449DF006ADDFD /* SceneDelegate.swift in Sources */,
+				4400A05827AB054D0084C099 /* QuestionTableViewCell.swift in Sources */,
 				443EB46027A449DF006ADDFD /* StackOverflowApplication.xcdatamodeld in Sources */,
+				443EB47B27A44EB9006ADDFD /* StackOverFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
