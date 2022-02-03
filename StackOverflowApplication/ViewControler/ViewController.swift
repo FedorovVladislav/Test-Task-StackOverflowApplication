@@ -8,7 +8,8 @@
 import UIKit
 import CoreData
 
-enum dataTag: String, CaseIterable {
+enum DataTag: String, CaseIterable {
+    
     case objC       = "Objective-C"
     case ios        = "IOS"
     case iphone     = "IPhone"
@@ -21,13 +22,18 @@ class ViewController: UIViewController {
     
     
     // MARK: - Variable
-    var cellectTag =  0
-
+    var cellectTag =  1
+    let networkManager = NetworkManager()
+    var questionsList: QuestionsList?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         questionTableView.dataSource = self
+        questionTableView.delegate = self
         
-        self.title = dataTag.allCases[self.cellectTag].rawValue
+        self.title = DataTag.allCases[self.cellectTag].rawValue
+        getData()
+        
     }
     
     // MARK: - Storyboard element
@@ -39,12 +45,25 @@ class ViewController: UIViewController {
         
         self.present(pickerViewControler(), animated: true, completion: nil )
     }
-    
-    
+
     private func updateTableView(index:Int ){
         // заголовок навигешион контроллера
-        self.title = dataTag.allCases[self.cellectTag].rawValue
+        self.title = DataTag.allCases[self.cellectTag].rawValue
+        // делаем запрос данныхс сервера
+        getData()
+    }
+    
+    func getData(){
+        self.questionTableView.reloadData()
         
+        networkManager.fetchQuestionList(tag: DataTag.allCases[self.cellectTag], completion: { data, error in
+            guard let data = data else {
+                print ("wrong data: \(error)")
+                return
+            }
+            self.questionsList = data
+            self.questionTableView.reloadData()
+        })
     }
     
     private func pickerViewControler () -> UIAlertController {
@@ -97,23 +116,42 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
         return 5
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataTag.allCases[row].rawValue
+        return DataTag.allCases[row].rawValue
     }
 }
 
-extension ViewController : UITableViewDataSource {
+extension ViewController : UITableViewDataSource, UITableViewDelegate {
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        guard let questionsList = questionsList else { return 0 }
+        
+        return questionsList.items.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell", for: indexPath) as? QuestionTableViewCell{
-            print("GOOD")
+            guard let questionData = questionsList?.items[indexPath.row]  else { return cell }
+            cell.initData(questionData: questionData)
+            
+            cell.accessoryType = .detailButton
             return cell
         }
         return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        if let ackVC = mainStoryBoard.instantiateViewController(withIdentifier: "ackVC") as? AckViewController  {
+            
+            guard let questionId = questionsList?.items[indexPath.row].question_id else { return }
+            ackVC.questionId = questionId
+            ackVC.question = questionsList?.items[indexPath.row]
+            
+            show(ackVC, sender: nil)
+       
+        }
+    }
+    
 }
 

@@ -65,6 +65,7 @@ class NetworkManager {
         }
         //парсим данные
         if let decodedResponse = try? JSONDecoder().decode(T.self, from: data) {
+            print("Parse data ")
             sleep(3)
             DispatchQueue.main.async {
                 completionHandler(decodedResponse, nil)
@@ -90,4 +91,33 @@ class NetworkManager {
     
 }
 
+extension NetworkManager {
+    
+    typealias ArticlesCompletionClosure = ((QuestionsList?, Error?) -> Void)
+
+    func fetchQuestionList(tag: DataTag, completion: @escaping ArticlesCompletionClosure) {
+    
+        guard  let url = URL(string: StackOverFlowAPI.setUrl(tag: tag)) else {
+            completion(nil, ManagerErrors.invalidUrl)
+            return
+        }
+        
+    executeRequestWithJSon(url: url, completionHandler: completion)
+    }
+}
+
+extension NetworkManager {
+    
+    typealias AnswerCompletionClosure = ((AnswerData?, Error?) -> Void)
+
+    func fetchAnsList(question id: Int, completion: @escaping AnswerCompletionClosure) {
+        print( StackOverFlowAPI.setUrl(question: id))
+        guard  let url = URL(string: StackOverFlowAPI.setUrl(question: id)) else {
+            completion (nil, ManagerErrors.invalidUrl)
+            return
+        }
+        
+    executeRequestWithJSon(url: url, completionHandler: completion)
+    }
+}
 

@@ -19,5 +19,19 @@ class QuestionTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func initData(questionData: Items){
+        //set items
+        textQuestions.text = questionData.title
+        countReplayLable.text = "Count replay: \(questionData.answer_count!)"
+        
+        dateLable.text = "Last ack: \(questionData.last_activity_date.intToTime)"
+        authtorLable.text = "Authtor: \(questionData.owner.display_name)"
+        
+    }
 
+    @IBOutlet weak var textQuestions: UITextView!
+    @IBOutlet weak var countReplayLable: UILabel!
+    @IBOutlet weak var dateLable: UILabel!
+    @IBOutlet weak var authtorLable: UILabel!
 }
